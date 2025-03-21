@@ -28,7 +28,7 @@ const Gigs = () => {
   const refreshData = async () => {
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/events/get`
+        `${process.env.REACT_APP_API_URL}/events/get`
       );
       const events = await response.json();
       setEvents(events);

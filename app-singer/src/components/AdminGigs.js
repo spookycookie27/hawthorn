@@ -46,7 +46,7 @@ const AdminGigs = () => {
 
   const refreshData = async () => {
     const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/events/get/`
+      `${process.env.REACT_APP_API_URL}/events/get/`
     );
     const events = await response.json();
     const cityOptions = [];
@@ -83,8 +83,8 @@ const AdminGigs = () => {
     }
 
     const url = hasId
-      ? `${process.env.REACT_APP_BACKEND_URL}/events/patch/${idToEdit}`
-      : `${process.env.REACT_APP_BACKEND_URL}/events/post`;
+      ? `${process.env.REACT_APP_API_URL}/events/patch/${idToEdit}`
+      : `${process.env.REACT_APP_API_URL}/events/post`;
     const headers = new Headers({
       Accept: 'application/json',
       'Content-Type': 'application/json',
@@ -109,7 +109,7 @@ const AdminGigs = () => {
   };
 
   const handleDelete = async () => {
-    const url = `${process.env.REACT_APP_BACKEND_URL}/events/delete/${idToDelete}`;
+    const url = `${process.env.REACT_APP_API_URL}/events/delete/${idToDelete}`;
     const headers = new Headers({
       Accept: 'application/json',
       'Content-Type': 'application/json',

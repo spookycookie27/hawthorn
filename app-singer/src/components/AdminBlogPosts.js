@@ -43,7 +43,7 @@ const AdminBlogPosts = () => {
 
   const fetchPosts = async () => {
     const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/blogposts/get`
+      `${process.env.REACT_APP_API_URL}/blogposts/get`
     );
     const data = await response.json();
     setPosts(data);
@@ -64,8 +64,8 @@ const AdminBlogPosts = () => {
 
       await fetch(
         hasId
-          ? `${process.env.REACT_APP_BACKEND_URL}/blogposts/patch/${idToEdit}`
-          : `${process.env.REACT_APP_BACKEND_URL}/blogposts/post`,
+          ? `${process.env.REACT_APP_API_URL}/blogposts/patch/${idToEdit}`
+          : `${process.env.REACT_APP_API_URL}/blogposts/post`,
         {
           method: hasId ? 'PATCH' : 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -80,7 +80,7 @@ const AdminBlogPosts = () => {
 
   const handleDelete = async () => {
     await fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/blogposts/delete/${idToDelete}`,
+      `${process.env.REACT_APP_API_URL}/blogposts/delete/${idToDelete}`,
       { method: 'DELETE' }
     );
     fetchPosts();

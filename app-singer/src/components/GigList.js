@@ -29,7 +29,7 @@ const GigList = () => {
   const refreshData = async () => {
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/api/Events/GetFutureEvents/`
+        `${process.env.REACT_APP_API_URL}/api/Events/GetFutureEvents/`
       );
       const events = await response.json();
       setEvents(events);

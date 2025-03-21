@@ -19,7 +19,7 @@ const Updates = () => {
 
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/api/blogposts`,
+        `${process.env.REACT_APP_API_URL}/api/blogposts`,
         { method: 'GET', headers }
       );
       const posts = await response.json();

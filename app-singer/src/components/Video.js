@@ -18,7 +18,7 @@ const Video = () => {
   const refreshData = async () => {
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/videos/get`
+        `${process.env.REACT_APP_API_URL}/videos/get`
       );
       const data = await response.json();
       setVideos(data);

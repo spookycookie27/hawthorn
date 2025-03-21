@@ -44,7 +44,7 @@ const Contact = () => {
 
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/enquiry/postContact`,
+        `${process.env.REACT_APP_API_URL}/enquiry/postContact`,
         {
           method: 'POST',
           body: JSON.stringify({ name, email, telephone, message }),

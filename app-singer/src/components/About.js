@@ -20,7 +20,7 @@ const About = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `${process.env.REACT_APP_BACKEND_URL}/blogposts/get`
+          `${process.env.REACT_APP_API_URL}/blogposts/get`
         );
         const posts = await response.json();
         const foundPost = posts.find((e) => e.pageTitle === 'About');

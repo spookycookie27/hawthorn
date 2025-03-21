@@ -18,15 +18,15 @@ const Instagram = () => {
   }, []);
 
   const refreshData = () => {
-    fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/api/Social/GetInstagramFeed`
-    ).then((response) => {
-      if (response.status === 204) return;
-      response.json().then((data) => {
-        setMedia(data);
-        setLoading(false);
-      });
-    });
+    fetch(`${process.env.REACT_APP_API_URL}/api/Social/GetInstagramFeed`).then(
+      (response) => {
+        if (response.status === 204) return;
+        response.json().then((data) => {
+          setMedia(data);
+          setLoading(false);
+        });
+      }
+    );
   };
 
   const handleClose = () => setShow(false);

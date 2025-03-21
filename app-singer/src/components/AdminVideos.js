@@ -31,7 +31,7 @@ const AdminVideos = () => {
   const refreshData = async () => {
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/videos/get`
+        `${process.env.REACT_APP_API_URL}/videos/get`
       );
       const data = await response.json();
       setVideos(data);
@@ -54,8 +54,8 @@ const AdminVideos = () => {
     if (hasId) video.id = idToEdit;
 
     const uri = hasId
-      ? `${process.env.REACT_APP_BACKEND_URL}/videos/patch/${idToEdit}`
-      : `${process.env.REACT_APP_BACKEND_URL}/videos/post`;
+      ? `${process.env.REACT_APP_API_URL}/videos/patch/${idToEdit}`
+      : `${process.env.REACT_APP_API_URL}/videos/post`;
     const headers = new Headers({
       Accept: 'application/json',
       'Content-Type': 'application/json',
@@ -80,7 +80,7 @@ const AdminVideos = () => {
   };
 
   const handleDelete = () => {
-    const url = `${process.env.REACT_APP_BACKEND_URL}/videos/delete/${idToDelete}`;
+    const url = `${process.env.REACT_APP_API_URL}/videos/delete/${idToDelete}`;
     const headers = new Headers({
       Accept: 'application/json',
       'Content-Type': 'application/json',
