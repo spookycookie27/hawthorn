@@ -15,7 +15,7 @@ import './About.scss';
 
 const About = () => {
   const [post, setPost] = useState(null);
-
+  console.log(post);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -32,15 +32,17 @@ const About = () => {
     fetchData();
   }, []);
 
+  const resolveContent = () => {
+    if (post) {
+      return <div dangerouslySetInnerHTML={{ __html: post.body }} />;
+    }
+    return getDefaultContent();
+  };
   return (
     <Container className='About' fluid='md'>
       <Row>
         <Col lg={5}>
-          {!post ? (
-            <div dangerouslySetInnerHTML={{ __html: post.body }} />
-          ) : (
-            getDefaultContent()
-          )}
+          {resolveContent()}
           <div className='share'>
             <span>Share</span>
             <div className='icons-container'>
