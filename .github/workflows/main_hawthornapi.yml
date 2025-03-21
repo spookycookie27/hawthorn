@@ -64,6 +64,15 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_5906AB4607D24A3893ABC6BEE1271C97 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_73856A9B30E741D88449E23EE65DC56B }}
 
+      - name: "Set ATLAS_URI Environment Variable"
+        run: |
+          az webapp config appsettings set --name hawthornapi \
+          --resource-group <RESOURCE_GROUP_NAME> \
+          --settings ATLAS_URI=${{ secrets.ATLAS_URI }}
+        env:
+          AZURE_WEBAPP_NAME: hawthornapi
+          AZURE_RESOURCE_GROUP: <RESOURCE_GROUP_NAME>
+
       - name: "Deploy to Azure Web App"
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
