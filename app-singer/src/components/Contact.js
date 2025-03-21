@@ -86,7 +86,6 @@ const Contact = () => {
               <Form>
                 <Row>
                   <Col xs={{ span: 9, offset: 3 }}>
-                    <p>TODO api</p>
                     <p>
                       For all enquiries please use the contact form below or
                       email{' '}
