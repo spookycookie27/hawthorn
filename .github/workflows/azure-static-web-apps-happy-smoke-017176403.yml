@@ -26,6 +26,7 @@ jobs:
         run: printenv | grep REACT_APP_API_URL
 
       - name: Install Dependencies and Build
+        working-directory: ./app-singer
         run: |
           npm install
           npm run build
