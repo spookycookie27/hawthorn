@@ -15,7 +15,7 @@ import './About.scss';
 
 const About = () => {
   const [post, setPost] = useState(null);
-  console.log(post);
+
   useEffect(() => {
     const fetchData = async () => {
       try {

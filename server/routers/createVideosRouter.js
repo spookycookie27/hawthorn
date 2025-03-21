@@ -1,5 +1,6 @@
 import express from "express";
 import { ObjectId } from "mongodb";
+import { verifyToken } from "./auth.mjs";
 
 const createVideosRouter = (db) => {
   const router = express.Router();
@@ -17,7 +18,7 @@ const createVideosRouter = (db) => {
   });
 
   // Add a new video
-  router.post("/post", async (req, res) => {
+  router.post("/post", verifyToken, async (req, res) => {
     try {
       const collection = db.collection(collectionName);
       const newDocument = { ...req.body, date: new Date() };
@@ -29,7 +30,7 @@ const createVideosRouter = (db) => {
   });
 
   // Update a video
-  router.patch("/patch/:id", async (req, res) => {
+  router.patch("/patch/:id", verifyToken, async (req, res) => {
     try {
       const query = { _id: new ObjectId(req.params.id) };
       const collection = db.collection(collectionName);
@@ -41,7 +42,7 @@ const createVideosRouter = (db) => {
   });
 
   // Delete a video
-  router.delete("/delete/:id", async (req, res) => {
+  router.delete("/delete/:id", verifyToken, async (req, res) => {
     try {
       const query = { _id: new ObjectId(req.params.id) };
       const collection = db.collection(collectionName);

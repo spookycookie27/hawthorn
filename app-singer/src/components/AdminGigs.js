@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Col,
   Row,
@@ -13,6 +14,7 @@ import Datetime from 'react-datetime';
 import * as moment from 'moment';
 import { Typeahead } from 'react-bootstrap-typeahead';
 import { FaCheckCircle, FaMapMarker } from 'react-icons/fa';
+import { getHeaders } from '../services/Auth';
 
 import 'react-datetime/css/react-datetime.css';
 import 'react-bootstrap-typeahead/css/Typeahead.css';
@@ -20,6 +22,7 @@ import 'react-bootstrap-typeahead/css/Typeahead.bs5.css';
 import './AdminGigs.scss';
 
 const AdminGigs = () => {
+  const navigate = useNavigate();
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [show, setShow] = useState(false);
@@ -38,31 +41,34 @@ const AdminGigs = () => {
   const [venueOptions, setVenueOptions] = useState([]);
   const [isPrivate, setIsPrivate] = useState(true);
 
-  console.log(events);
-
   useEffect(() => {
     refreshData();
   }, []);
 
   const refreshData = async () => {
     const response = await fetch(
-      `${process.env.REACT_APP_API_URL}/events/get/`
+      `${process.env.REACT_APP_API_URL}/events/get/`,
+      { method: 'GET', headers: getHeaders() }
     );
-    const events = await response.json();
-    const cityOptions = [];
-    const venueOptions = [];
-    events.forEach((x) => {
-      if (!cityOptions.find((o) => o.label === x.city)) {
-        cityOptions.push({ id: x.city, label: x.city });
-      }
-      if (!venueOptions.find((o) => o.label === x.venue)) {
-        venueOptions.push({ id: x.venue, label: x.venue });
-      }
-    });
-    setCityOptions(cityOptions);
-    setVenueOptions(venueOptions);
-    setEvents(events);
-    setLoading(false);
+    if (response.ok) {
+      const events = await response.json();
+      const cityOptions = [];
+      const venueOptions = [];
+      events.forEach((x) => {
+        if (!cityOptions.find((o) => o.label === x.city)) {
+          cityOptions.push({ id: x.city, label: x.city });
+        }
+        if (!venueOptions.find((o) => o.label === x.venue)) {
+          venueOptions.push({ id: x.venue, label: x.venue });
+        }
+      });
+      setCityOptions(cityOptions);
+      setVenueOptions(venueOptions);
+      setEvents(events);
+      setLoading(false);
+    } else {
+      navigate('/login');
+    }
   };
 
   const handleSave = async () => {
@@ -85,23 +91,19 @@ const AdminGigs = () => {
     const url = hasId
       ? `${process.env.REACT_APP_API_URL}/events/patch/${idToEdit}`
       : `${process.env.REACT_APP_API_URL}/events/post`;
-    const headers = new Headers({
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    });
 
     try {
       const response = await fetch(url, {
         method: hasId ? 'PATCH' : 'POST',
         body: JSON.stringify(event),
-        headers,
+        headers: getHeaders(),
       });
 
       if (response.ok) {
         await refreshData();
         setShow(false);
       } else {
-        console.error('Failed to save event:', response.statusText);
+        navigate('/login');
       }
     } catch (error) {
       console.error('Error saving event:', error);
@@ -110,19 +112,18 @@ const AdminGigs = () => {
 
   const handleDelete = async () => {
     const url = `${process.env.REACT_APP_API_URL}/events/delete/${idToDelete}`;
-    const headers = new Headers({
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    });
 
     try {
-      const response = await fetch(url, { method: 'DELETE', headers });
+      const response = await fetch(url, {
+        method: 'DELETE',
+        headers: getHeaders(),
+      });
 
       if (response.ok) {
         await refreshData();
         setShowConfirm(false);
       } else {
-        console.error('Failed to delete event:', response.statusText);
+        navigate('/login');
       }
     } catch (error) {
       console.error('Error deleting event:', error);

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Col,
   Row,
@@ -18,11 +19,13 @@ import { EditorState, convertToRaw } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
 import { stateFromHTML } from 'draft-js-import-html';
 import draftToHtml from 'draftjs-to-html';
+import { getHeaders } from '../services/Auth';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import './react-datetime.css';
 import './AdminBlogPosts.scss';
 
 const AdminBlogPosts = () => {
+  const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
   const [edit, setEdit] = useState(false);
   const [idToEdit, setIdToEdit] = useState('');
@@ -43,10 +46,15 @@ const AdminBlogPosts = () => {
 
   const fetchPosts = async () => {
     const response = await fetch(
-      `${process.env.REACT_APP_API_URL}/blogposts/get`
+      `${process.env.REACT_APP_API_URL}/blogposts/get`,
+      { method: 'GET', headers: getHeaders() }
     );
-    const data = await response.json();
-    setPosts(data);
+    if (response.ok) {
+      const data = await response.json();
+      setPosts(data);
+    } else {
+      navigate('/login');
+    }
   };
 
   const handleSave = async () => {
@@ -61,30 +69,34 @@ const AdminBlogPosts = () => {
         type,
         ...(hasId && { id: idToEdit }),
       };
-
-      await fetch(
-        hasId
-          ? `${process.env.REACT_APP_API_URL}/blogposts/patch/${idToEdit}`
-          : `${process.env.REACT_APP_API_URL}/blogposts/post`,
-        {
-          method: hasId ? 'PATCH' : 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(postData),
-        }
-      );
-
-      fetchPosts();
-      setEdit(false);
+      const uri = hasId
+        ? `${process.env.REACT_APP_API_URL}/blogposts/patch/${idToEdit}`
+        : `${process.env.REACT_APP_API_URL}/blogposts/post`;
+      const response = await fetch(uri, {
+        method: hasId ? 'PATCH' : 'POST',
+        headers: getHeaders(),
+        body: JSON.stringify(postData),
+      });
+      if (response.ok) {
+        fetchPosts();
+        setEdit(false);
+      } else {
+        navigate('/login');
+      }
     }
   };
 
   const handleDelete = async () => {
-    await fetch(
+    const response = await fetch(
       `${process.env.REACT_APP_API_URL}/blogposts/delete/${idToDelete}`,
-      { method: 'DELETE' }
+      { method: 'DELETE', headers: getHeaders() }
     );
-    fetchPosts();
-    setShowConfirm(false);
+    if (response.ok) {
+      fetchPosts();
+      setShowConfirm(false);
+    } else {
+      navigate('/login');
+    }
   };
 
   const handleEdit = (postId) => {

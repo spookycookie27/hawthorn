@@ -1,5 +1,6 @@
 import express from "express";
 import { ObjectId } from "mongodb";
+import { verifyToken } from "./auth.mjs";
 
 const createBlogPostsRouter = (db) => {
   const router = express.Router();
@@ -17,7 +18,7 @@ const createBlogPostsRouter = (db) => {
   });
 
   // Add a new post
-  router.post("/post", async (req, res) => {
+  router.post("/post", verifyToken, async (req, res) => {
     try {
       const collection = db.collection(collectionName);
       const newDocument = { ...req.body, date: new Date() };
@@ -29,7 +30,7 @@ const createBlogPostsRouter = (db) => {
   });
 
   // Update a post
-  router.patch("/patch/:id", async (req, res) => {
+  router.patch("/patch/:id", verifyToken, async (req, res) => {
     try {
       const query = { _id: new ObjectId(req.params.id) };
       const collection = db.collection(collectionName);
@@ -42,7 +43,7 @@ const createBlogPostsRouter = (db) => {
   });
 
   // Delete a post
-  router.delete("/delete/:id", async (req, res) => {
+  router.delete("/delete/:id", verifyToken, async (req, res) => {
     try {
       const query = { _id: new ObjectId(req.params.id) };
       const collection = db.collection(collectionName);

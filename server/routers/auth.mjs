@@ -11,8 +11,8 @@ const USERS = [
 ];
 
 // Middleware for JWT validation
-const verifyToken = (req, res, next) => {
-  const token = req.headers["authorization"];
+export const verifyToken = (req, res, next) => {
+  const token = req.headers["authorization"]?.replace("Bearer ", "");
   if (!token) {
     return res.status(401).json({ error: "Unauthorized" });
   }

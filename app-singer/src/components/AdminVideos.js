@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Col,
   Row,
@@ -8,9 +9,11 @@ import {
   Modal,
   Form,
 } from 'react-bootstrap';
+import { getHeaders } from '../services/Auth';
 import './AdminVideos.scss';
 
 const AdminVideos = () => {
+  const navigate = useNavigate();
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [show, setShow] = useState(false);
@@ -31,11 +34,16 @@ const AdminVideos = () => {
   const refreshData = async () => {
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/videos/get`
+        `${process.env.REACT_APP_API_URL}/videos/get`,
+        { method: 'GET', headers: getHeaders() }
       );
-      const data = await response.json();
-      setVideos(data);
-      setLoading(false);
+      if (response.ok) {
+        const data = await response.json();
+        setVideos(data);
+        setLoading(false);
+      } else {
+        navigate('/login');
+      }
     } catch (error) {
       console.error('Error fetching videos:', error);
     }
@@ -56,40 +64,37 @@ const AdminVideos = () => {
     const uri = hasId
       ? `${process.env.REACT_APP_API_URL}/videos/patch/${idToEdit}`
       : `${process.env.REACT_APP_API_URL}/videos/post`;
-    const headers = new Headers({
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    });
 
     try {
       const response = await fetch(uri, {
         method: hasId ? 'PATCH' : 'POST',
         body: JSON.stringify(video),
-        headers,
+        headers: getHeaders(),
       });
-
       if (response.ok) {
         await refreshData();
         setShow(false);
       } else {
-        console.error('Failed to save event:', response.statusText);
+        navigate('/login');
       }
     } catch (error) {
       console.error('Error saving event:', error);
     }
   };
 
-  const handleDelete = () => {
+  const handleDelete = async () => {
     const url = `${process.env.REACT_APP_API_URL}/videos/delete/${idToDelete}`;
-    const headers = new Headers({
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
+    const response = await fetch(url, {
+      method: 'DELETE',
+      headers: getHeaders(),
     });
-
-    fetch(url, { method: 'DELETE', headers }).then(() => {
-      refreshData();
+    if (response.ok) {
+      setIdToDelete(null);
       setShowConfirm(false);
-    });
+      refreshData();
+    } else {
+      navigate('/login');
+    }
   };
 
   const onAddNew = () => {

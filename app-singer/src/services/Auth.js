@@ -1,12 +1,7 @@
 const STORAGE_KEY = 'token';
-const AVATAR_KEY = 'avatar';
 
 export function isSignedIn() {
   return !!window.localStorage.getItem(STORAGE_KEY);
-}
-
-export function getAvatarUrl() {
-  return window.localStorage.getItem(AVATAR_KEY);
 }
 
 export function getToken() {
@@ -21,4 +16,12 @@ export function signOut() {
   window.localStorage.removeItem(STORAGE_KEY);
   window.localStorage.removeItem(AVATAR_KEY);
 }
-  
+
+export function getHeaders() {
+  const headers = new Headers({
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${window.localStorage.getItem(STORAGE_KEY)}`,
+  });
+  return headers;
+}
