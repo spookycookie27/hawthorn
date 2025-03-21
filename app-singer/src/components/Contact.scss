@@ -1,0 +1,190 @@
+.Contact {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  min-height: 640px;
+  @media (min-width: 998px) {
+    min-height: 720px;
+  }
+  .wrapper {
+    position: relative;
+    margin: 0px;
+    background-color: white;
+    z-index: 1000;
+    overflow: hidden;
+    @media (min-width: 998px) {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+    .contact-grid {
+      z-index: 1400;
+      .footer-content {
+        .footer-right {
+          height: 100%;
+          a {
+            color: #8eccd5;
+          }
+          .overlay {
+            background-color: #272727;
+            opacity: 0.6;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            height: 100%;
+            z-index: 1400;
+          }
+          form {
+            position: relative;
+            color: #fafafa;
+            z-index: 2000;
+            padding: 15px;
+            padding-top: 60px;
+            font-size: 90%;
+            .row {
+              padding: 0;
+              .col-form-label {
+                text-align: left;
+                font-weight: bold;
+                @media (min-width: 576px) {
+                  text-align: right;
+                }
+              }
+            }
+            .button-container {
+              margin: 30px 0;
+              .submit-button {
+                color: #8eccd5;
+                background-color: transparent;
+                border: 2px solid #8eccd5;
+                border-radius: 0px;
+                padding: 10px 20px;
+                background-image: none !important;
+              }
+            }
+            p {
+              margin-bottom: 30px;
+            }
+            .form-control {
+              border-color: #f8feff;
+              border-radius: 0px;
+              background-color: transparent;
+              font-size: 90%;
+              color: #8eccd5;
+              &::placeholder {
+                color: #888;
+              }
+            }
+            @media (min-width: 998px) {
+              position: absolute;
+              margin-top: 15vh;
+              padding-top: 0;
+            }
+          }
+        }
+        .footer-left {
+          height: 100%;
+          text-align: center;
+          .footer-nav {
+            position: relative;
+            z-index: 1300;
+            padding: 25px;
+            display: inline-block;
+            text-align: left;
+            z-index: 3000;
+            .footer-logo {
+              margin-top: 30px;
+            }
+            ul {
+              list-style: none;
+              margin: 0;
+              padding: 0;
+              li {
+                color: #8eccd5;
+                margin: 20px 10px;
+                cursor: pointer;
+                letter-spacing: 0.5em;
+                font-size: 1.2em;
+                &:hover {
+                  color: #d7f4f8;
+                  letter-spacing: 0.7em;
+                }
+              }
+            }
+            .icons-container {
+              display: block;
+              margin: left;
+              a:hover {
+                color: #d7f4f8;
+              }
+              .social-link {
+                display: inline-block;
+                margin: 0 5px;
+                padding: 2px;
+                border: 1px solid #8eccd5;
+                color: #8eccd5;
+                border-radius: 50%;
+                width: 30px;
+                height: 30px;
+                font-size: 20px;
+                text-align: center;
+                svg {
+                  margin-top: 2px;
+                  display: inline-block;
+                }
+              }
+            }
+            @media (min-width: 998px) {
+              position: relative;
+              margin-top: 20px;
+              width: 50%;
+              margin-left: 33%;
+              padding: 25px;
+              display: block;
+              text-align: left;
+              z-index: 3000;
+              margin-bottom: 50px;
+              margin-top: 25vh;
+              margin-bottom: 0px;
+            }
+          }
+        }
+        @media (min-width: 998px) {
+          height: 100%;
+        }
+      }
+    }
+    .background-video-container {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 1050;
+      margin: 0px;
+      padding: 0;
+      overflow: hidden;
+      video {
+        min-height: 100%;
+        min-width: 100%;
+      }
+    }
+    .full-width-backdrop {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.8;
+      background-color: #272727;
+      z-index: 1100;
+      @media (min-width: 768px) {
+        opacity: 0.6;
+        background-color: #4d4d4d;
+      }
+    }
+  }
+}

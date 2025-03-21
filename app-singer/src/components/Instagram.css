@@ -1,0 +1,142 @@
+.Instagram .section-heading {
+    text-align: left;
+}
+
+.Instagram .feed-items-row {
+    padding-right: 30px;
+    padding-left: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.Instagram .feed-items {
+    margin: 20px -8px;
+}
+
+.Instagram .feed-item {
+    display: block;
+    height: 200px;
+    padding: 20px;
+}
+
+.Instagram .feed-item .inner-wrapper {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.Instagram .feed-item .inner-box {
+    position: absolute;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 100%;
+    width: 100%;
+    z-index: 50;
+}
+
+.Instagram .feed-item .inner-box:hover {
+    animation: kenburns 5s infinite;
+}
+
+.Instagram .feed-item .inner-box:hover {
+    animation: kenburns 5s infinite;
+}
+
+.Instagram .slick-arrow:before {
+    color: #8eccd5;
+}
+
+.tag-list {
+    max-width: 100%;
+}
+
+.tag { margin: 0 5px; display: inline-block;}
+
+
+@media (max-width: 1200px) {
+    .Instagram .feed-item {
+        padding: 10px;
+        height: 160px;
+    }
+}
+
+@media (max-width: 960px) {
+    .Instagram .feed-item {
+        padding: 10px;
+        height: 150px;
+    }
+}
+
+@media (max-width: 767px) {
+    .Instagram .feed-item {
+        padding: 8px;
+        height: 140px;
+    }
+    .slick-dots {
+        visibility: hidden;
+    }
+}
+
+@media (max-width: 667px) {
+    .Instagram .feed-item {
+        padding: 8px;
+        height: 140px;
+    }
+}
+
+@media (max-width: 480px) {
+    .Instagram .feed-item {
+        padding: 10px;
+        height: 300px;
+    }
+}
+
+@keyframes kenburns {
+    0% {
+        opacity: 1;
+        transform: scale3d(1, 1, 1) ;
+    }
+    100% {
+        transform: scale3d(1.2, 1.2, 1.2);
+        animation-timing-function: ease-in;
+    }
+}
+
+@media (max-width: 480px) {
+    .insta-modal .modal-dialog {
+        margin:1px !important;
+    }
+    .insta-modal .content-container {
+        max-height: 60vh;
+    }
+}
+
+.insta-modal .date,
+.insta-modal .likes {
+    width: 50%;
+    display: inline-block;
+}
+
+.insta-modal .likes {
+    text-align: right;
+}
+
+.Instagram .slick-prev, .Instagram .slick-next {
+    z-index: 10000;
+}
+
+.Instagram .slick-prev:before, .Instagram  .slick-next:before {
+    font-size: 36px;
+}
+
+.Instagram .slick-prev {
+    left: -38px;
+}
+
+.Instagram .slick-next {
+    right: -23px;
+}

@@ -1,0 +1,49 @@
+.Home {
+  .carousel-slide {
+    background-color: white;
+    background-image: linear-gradient(to bottom, #b47e91, #edc7c3);
+  }
+
+  .carousel-slide img {
+    opacity: 0.64;
+  }
+  .control-dots {
+    padding-left: 60%;
+  }
+  .carousel .control-dots .dot {
+    -webkit-box-shadow: unset;
+    box-shadow: unset;
+  }
+
+  .gigs-container {
+    opacity: 1;
+    background-image: linear-gradient(to bottom, #e6eff1, #f2d8d6);
+  }
+
+  .video-container {
+    padding-bottom: 50px;
+  }
+
+  .updates-container {
+    margin-bottom: 50px;
+  }
+
+  .instagram-container {
+    margin-bottom: 50px;
+    margin-top: 50px;
+  }
+
+  @media (max-width: 767px) {
+    .video-container {
+      padding-bottom: 25px;
+    }
+
+    .updates-container {
+      margin-bottom: 25px;
+    }
+
+    .instagram-container {
+      margin-bottom: 25px;
+    }
+  }
+}
