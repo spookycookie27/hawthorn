@@ -4,13 +4,10 @@ const { verify, sign } = pkg;
 
 const router = express.Router();
 
-// Secret key for JWT
-const SECRET_KEY = "your-secret-key"; // Replace with a secure key in production
-
-// Hardcoded user credentials (for demonstration purposes only)
+const SECRET_KEY = process.env.SECRET_KEY;
 const USERS = [
-  { email: "sp.cooke@me.com", pass: "Chajamrob1" },
-  { email: "amyhawthorn_6@hotmail.com", pass: "musicIs4life" },
+  { email: process.env.STEVE_LOGIN, pass: process.env.STEVE_PASS },
+  { email: process.env.AMY_LOGIN, pass: process.env.AMY_PASS },
 ];
 
 // Middleware for JWT validation
