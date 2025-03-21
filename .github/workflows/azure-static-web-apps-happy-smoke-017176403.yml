@@ -3,11 +3,11 @@ name: Azure Static Web Apps CI/CD
 on:
   push:
     branches:
-      - main
+      - amy-singer
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
-      - main
+      - amy-singer
 
 jobs:
   build_and_deploy_job:
