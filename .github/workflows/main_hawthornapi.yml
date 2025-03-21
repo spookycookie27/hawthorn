@@ -55,12 +55,6 @@ jobs:
       - name: Unzip artifact for deployment
         run: unzip release.zip
 
-      - name: List contents of release.zip
-        run: unzip -l release.zip
-
-      - name: List extracted files
-        run: ls -la
-
       - name: Remove release.zip after extraction
         run: rm -f release.zip
 
@@ -70,6 +64,13 @@ jobs:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_38CBC8AEB0E94BB2BB7822CB5763C7C8 }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_5906AB4607D24A3893ABC6BEE1271C97 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_73856A9B30E741D88449E23EE65DC56B }}
+
+      - name: Remove existing files from Azure Web App (Optional)
+        run: |
+          az webapp delete --name hawthornapi --resource-group <RESOURCE_GROUP_NAME> --slot Production
+        env:
+          AZURE_WEBAPP_NAME: hawthornapi
+          AZURE_RESOURCE_GROUP: <RESOURCE_GROUP_NAME>
 
       - name: "Deploy to Azure Web App"
         id: deploy-to-webapp
