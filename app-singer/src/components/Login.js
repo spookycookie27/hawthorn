@@ -8,8 +8,8 @@ import './Login.scss';
 
 const Login = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState('sp.cooke@me.com');
-  const [pass, setPass] = useState('Chajamrob1');
+  const [email, setEmail] = useState('');
+  const [pass, setPass] = useState('');
   const [isEmailValid, setIsEmailValid] = useState(true);
   const [isPassValid, setIsPassValid] = useState(true);
 
