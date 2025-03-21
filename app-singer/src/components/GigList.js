@@ -29,7 +29,7 @@ const GigList = () => {
   const refreshData = async () => {
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/api/Events/GetFutureEvents/`
+        `${process.env.REACT_APP_API_URL}/events/getfuture`
       );
       const events = await response.json();
       setEvents(events);
@@ -56,42 +56,44 @@ const GigList = () => {
     const popover = (
       <Popover id='popover' className='gig-popover'>
         {event && (
-          <Row>
-            <Col sm={detailCol}>
-              <h3>{event.venue}</h3>
-              <p>{event.city}</p>
-              <p>{moment(event.eventDate).format('DD MMM YYYY')}</p>
-              <p>{getGigTimes(event)}</p>
-              <h4>{event.name}</h4>
-              <p>{event.description}</p>
-              {event.ticketUrl && (
-                <p>
-                  <FaTags />
-                  <a
-                    href={event.ticketUrl}
-                    target='_blank'
-                    rel='noopener noreferrer'
-                  >
-                    &nbsp;TICKETS HERE
-                  </a>
-                </p>
+          <Container>
+            <Row>
+              <Col sm={detailCol}>
+                <h3>{event.venue}</h3>
+                <p>{event.city}</p>
+                <p>{moment(event.eventDate).format('DD MMM YYYY')}</p>
+                <p>{getGigTimes(event)}</p>
+                <h4>{event.name}</h4>
+                <p>{event.description}</p>
+                {event.ticketUrl && (
+                  <p>
+                    <FaTags />
+                    <a
+                      href={event.ticketUrl}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                    >
+                      &nbsp;TICKETS HERE
+                    </a>
+                  </p>
+                )}
+              </Col>
+              {event.googleMapLink && (
+                <Col sm={6}>
+                  <div className='maps-container'>
+                    <div
+                      dangerouslySetInnerHTML={{ __html: event.googleMapLink }}
+                    />
+                  </div>
+                </Col>
               )}
-            </Col>
-            {event.googleMapLink && (
-              <Col sm={6}>
-                <div className='maps-container'>
-                  <div
-                    dangerouslySetInnerHTML={{ __html: event.googleMapLink }}
-                  />
-                </div>
-              </Col>
-            )}
-            {!event.googleMapLink && (
-              <Col sm={3} className='d-none d-sm-block'>
-                <Image src='./images/FB_IMG_1488927166505.jpg' fluid />
-              </Col>
-            )}
-          </Row>
+              {!event.googleMapLink && (
+                <Col sm={3} className='d-none d-sm-block'>
+                  <Image src='./images/FB_IMG_1488927166505.jpg' fluid />
+                </Col>
+              )}
+            </Row>
+          </Container>
         )}
       </Popover>
     );
