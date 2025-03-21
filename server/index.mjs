@@ -5,6 +5,7 @@ import "express-async-errors";
 import db from "./db/conn.mjs";
 
 import auth from "./routers/auth.mjs";
+import email from "./routers/email.mjs";
 import createVideosRouter from "./routers/createVideosRouter.js";
 import createBlogPostsRouter from "./routers/createBlogPostsRouter.js";
 import createEventsRouter from "./routers/createEventsRouter.js";
@@ -22,6 +23,7 @@ app.use(express.json());
 //app.use("/posts", posts);
 
 app.use("/auth", auth);
+app.use("/email", email);
 app.use("/events", createEventsRouter(db));
 app.use("/videos", createVideosRouter(db));
 app.use("/blogposts", createBlogPostsRouter(db));
