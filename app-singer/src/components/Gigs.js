@@ -128,7 +128,7 @@ const Gigs = () => {
   };
 
   return (
-    <Container className='Gigs'>
+    <Container className='Gigs p-1'>
       <h2 className='section-heading'>LIVE</h2>
       <div className='section-heading-line white' />
       <p>
