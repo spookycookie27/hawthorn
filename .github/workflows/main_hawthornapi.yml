@@ -67,10 +67,10 @@ jobs:
 
       - name: Remove existing files from Azure Web App (Optional)
         run: |
-          az webapp delete --name hawthornapi --resource-group <RESOURCE_GROUP_NAME> --slot Production
+          az webapp delete --name hawthornapi --resource-group appsvc_linux_centralus --slot Production
         env:
           AZURE_WEBAPP_NAME: hawthornapi
-          AZURE_RESOURCE_GROUP: <RESOURCE_GROUP_NAME>
+          AZURE_RESOURCE_GROUP: appsvc_linux_centralus
 
       - name: "Deploy to Azure Web App"
         id: deploy-to-webapp
