@@ -28,7 +28,7 @@ jobs:
       - name: Zip artifact for deployment
         working-directory: ./server
         run: |
-          zip -r release.zip . # Ensure node_modules is included
+          zip -r release.zip . -x ".git/*" ".env" "README.md" "tests/*"
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -57,6 +57,12 @@ jobs:
 
       - name: Remove release.zip after extraction
         run: rm -f release.zip
+
+      - name: List contents of release.zip
+        run: unzip -l release.zip
+
+      - name: List extracted files
+        run: ls -la
 
       - name: Login to Azure
         uses: azure/login@v2
