@@ -35,7 +35,7 @@ const TopMenu = () => {
       <Container fluid='md'>
         <div>
           <Navbar.Brand>
-            <NavLink to={'/'}>AMY HAWTHORN</NavLink>
+            <NavLink to={'/'}>AMY WEBSTER</NavLink>
           </Navbar.Brand>
           <div className='icons-container'>
             <a

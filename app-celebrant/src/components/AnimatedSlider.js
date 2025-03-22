@@ -24,7 +24,7 @@ const content = [
   {
     title: 'About Amy',
     description:
-      'Amy Hawthorn is a Singer/Songwriter from West Lothian, Scotland',
+      'Amy Webster is a Singer/Songwriter from West Lothian, Scotland',
     button: 'DISCOVER',
     backgroundImage: '/images/slide6.jpg',
     linkTo: '#about',

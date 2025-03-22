@@ -32,25 +32,11 @@ const App = () => {
       return (
         <Helmet>
           <meta charSet='utf-8' />
-          <title>
-            Amy Hawthorn | Soul RnB Session Singer Vocalist Songwriter Scotland
-          </title>
+          <title>Amy Webster | Celebrant weddings funerals Scotland</title>
           <link rel='canonical' href='http://www.amyhawthorn.com' />
           <meta
             name='description'
-            content="Amy Hawthorn is a talented singer and songwriter with a special love of RnB, Soul, Funk and Blues. Check out Amy's latest news, tracks and engagements."
-          />
-        </Helmet>
-      );
-    } else if (path === '/giglist') {
-      return (
-        <Helmet>
-          <meta charSet='utf-8' />
-          <title>Amy Hawthorn | List of Live Gigs and Events</title>
-          <link rel='canonical' href='http://www.amyhawthorn.com/giglist' />
-          <meta
-            name='description'
-            content="Here you can find Amy Hawthorns's full list of gigs. Check her availability here."
+            content='Amy Webster is a wedding and funeral celebrant, based in Edinburgh and working throughout Scotland. She is warm, honest and compassionate and will work with you to create a ceremony that truly reflects you.'
           />
         </Helmet>
       );
@@ -58,7 +44,7 @@ const App = () => {
       return (
         <Helmet>
           <meta charSet='utf-8' />
-          <title>Amy Hawthorn | Page Not Found</title>
+          <title>Amy Webster | Page Not Found</title>
           <meta name='description' content='Page not found or removed' />
           <meta name='robots' content='noindex,nofollow,noarchive' />
         </Helmet>
