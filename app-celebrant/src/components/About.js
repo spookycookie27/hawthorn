@@ -23,7 +23,9 @@ const About = () => {
           `${process.env.REACT_APP_API_URL}/blogposts/get`
         );
         const posts = await response.json();
-        const foundPost = posts.find((e) => e.pageTitle === 'About');
+        const foundPost = posts.find(
+          (e) => e.pageTitle === 'About Me – Celebrant'
+        );
         setPost(foundPost);
       } catch (error) {
         console.error('Error fetching data:', error);

@@ -13,10 +13,10 @@ import './Home.scss';
 const Home = () => {
   return (
     <div className='Home'>
-      <section id='top-slider' className='slider-container'>
+      {/* <section id='top-slider' className='slider-container'>
         <AnimatedSlider />
-      </section>
-      <section id='music' className='music-container'>
+      </section> */}
+      {/* <section id='music' className='music-container'>
         <Music />
       </section>
       <section id='videos' className='video-container'>
@@ -24,7 +24,7 @@ const Home = () => {
       </section>
       <section id='gigs' className='gigs-container'>
         <Gigs />
-      </section>
+      </section> */}
       <section id='about' className='about-container'>
         <About />
       </section>
