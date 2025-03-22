@@ -16,7 +16,7 @@ const Music = () => {
   };
 
   return (
-    <Container className='Music'>
+    <Container className='Music pt-5'>
       <h2 className='section-heading'>MUSIC</h2>
       <div className='section-heading-line' />
       <Row>

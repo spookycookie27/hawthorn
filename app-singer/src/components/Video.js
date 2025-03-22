@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Image } from 'react-bootstrap';
 import ReactPlayer from 'react-player';
 
-import './Video.css';
+import './Video.scss';
 
 const Video = () => {
   const [videoUrl, setVideoUrl] = useState(

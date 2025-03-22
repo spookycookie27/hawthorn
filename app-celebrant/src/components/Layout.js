@@ -1,11 +1,11 @@
 import React from 'react';
 import TopMenu from './TopMenu';
 
-import './Layout.css';
+import './Layout.scss';
 
 const Layout = ({ children }) => {
   return (
-    <div className="Layout">
+    <div className='Layout'>
       <TopMenu />
       {children}
     </div>

@@ -17,11 +17,13 @@
 
   .gigs-container {
     opacity: 1;
-    background-image: linear-gradient(to bottom, #e6eff1, #f2d8d6);
+    background-image: linear-gradient(rgb(234, 240, 241), rgb(255, 215, 215));
   }
 
   .video-container {
     padding-bottom: 50px;
+    background-color: rgb(245, 245, 245);
+    padding-top: 20px;
   }
 
   .updates-container {
@@ -30,7 +32,6 @@
 
   .instagram-container {
     margin-bottom: 50px;
-    margin-top: 50px;
   }
 
   @media (max-width: 767px) {

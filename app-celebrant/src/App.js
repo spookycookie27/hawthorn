@@ -6,7 +6,6 @@ import AdminGigs from './components/AdminGigs';
 import AdminBlogPosts from './components/AdminBlogPosts';
 import AdminVideos from './components/AdminVideos';
 import Login from './components/Login';
-import GigList from './components/GigList';
 import NotFound from './components/NotFound';
 import Helmet from 'react-helmet';
 import { isSignedIn } from './services/Auth';
@@ -73,7 +72,6 @@ const App = () => {
             <Route exact path='/admin/news' element={<AdminBlogPosts />} />
             <Route exact path='/admin/videos' element={<AdminVideos />} />
           </Route>
-          <Route exact path='/giglist' element={<GigList />} />
           {/* <Route exact path='/news' element={News} />
           <Route exact path='/news/:id' element={Post} /> */}
 

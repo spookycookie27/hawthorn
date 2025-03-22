@@ -1,0 +1,13 @@
+.Layout {
+  padding-top: 50px;
+  background-color: #fffafa;
+  min-height: 90vh;
+  .navbar-collapse {
+    &.show {
+      .navbar-nav {
+        border: 1px solid #8eccd5;
+        padding: 5px;
+      }
+    }
+  }
+}

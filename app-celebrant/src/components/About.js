@@ -44,6 +44,8 @@ const About = () => {
     <Container className='About' fluid='md'>
       <Row>
         <Col lg={5}>
+          <h1>Amy Webster</h1>
+          <div className='section-heading-line white mt-4' />
           {resolveContent()}
           <div className='share'>
             <span>Share</span>
