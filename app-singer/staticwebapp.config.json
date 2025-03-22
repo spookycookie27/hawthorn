@@ -5,5 +5,9 @@
       "methods": ["GET"],
       "rewrite": "/index.html"
     }
-  ]
+  ],
+  "mimeTypes": {
+    ".json": "text/json",
+    ".css": "text/css"
+  }
 }
