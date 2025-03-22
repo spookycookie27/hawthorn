@@ -1,0 +1,31 @@
+.Video .video-wrapper {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 0px;
+    height: 0;
+    margin: 0;
+}
+
+.Video .video-wrapper iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+@media (min-width: 768px) {
+    .Video .video-wrapper {
+        margin-bottom: 30px;
+    }
+}
+
+.Video .video-links {
+    padding-top: 10px;
+}
+
+.Video .video-link {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}

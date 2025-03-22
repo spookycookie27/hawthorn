@@ -1,0 +1,55 @@
+.Gigs .table > thead > tr > th, 
+.Gigs .table > tbody > tr > th, 
+.Gigs .table > tfoot > tr > th, 
+.Gigs .table > thead > tr > td, 
+.Gigs .table > tbody > tr > td, 
+.Gigs .table > tfoot > tr > td {
+    border-top: 2px white solid;
+}
+
+.Gigs .table > tbody > tr > td {
+  cursor: pointer;
+}
+.Gigs .gigs-table { text-align: center; text-transform: uppercase }
+
+.Gigs .gigs-table a { margin-left: 10px; }
+
+.Gigs .public-gigs { margin-top: 20px;}
+
+.Gigs p { text-align: center }
+.Gigs .link { margin: 20px 0; text-align: center }
+.Gigs .link a {
+  font-family: Helvetica;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 0.2px;
+  color: #dd889a;
+}
+
+.maps-container {position: relative;}
+.maps-container iframe { width: 100% !important;}
+
+.popover.gig-popover{
+  width: 60%;
+  max-width: 60%;
+  min-height: 200px;
+  border: 3px solid #efdede;
+}
+
+.popover.gig-popover a {
+  cursor: pointer;
+  color: #dd889a;
+}
+
+.popover.bottom > .arrow:after {
+  top: 6px;
+}
+
+.popover.bottom > .arrow {
+  top: -14px;
+  margin-left: 11px;
+  border-bottom-color: #efdede;
+}

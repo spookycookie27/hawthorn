@@ -1,0 +1,112 @@
+.About {
+  padding-top: 80px;
+  padding-bottom: 30px;
+  @media (max-width: 767px) {
+    padding-top: 30px;
+  }
+
+  h1 {
+    font-size: 32px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 0.4px;
+    color: #5d6371;
+    text-align: left;
+  }
+  h2 {
+    font-size: 18px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 0.2px;
+    color: #5d6371;
+  }
+  p {
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.5;
+    letter-spacing: 0.2px;
+    color: #5d6371;
+    a {
+      color: #dd889a;
+    }
+  }
+  .section-heading-line {
+    text-align: left;
+    margin: 0 0 40px 0;
+    width: 127px;
+    height: 6px;
+    opacity: 0.5;
+    background-color: #eacbc4;
+  }
+  .image-wrapper {
+    position: relative;
+    min-height: 600px;
+    .image-right {
+      width: 60%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      z-index: 100;
+      min-height: 500px;
+      position: absolute;
+      right: 15px;
+      top: 0;
+    }
+    .image-bottom {
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: top center;
+      z-index: 100;
+      min-height: 600px;
+      position: absolute;
+      width: calc(100% - 30px);
+      margin: 0 auto;
+      margin-top: 40px;
+      @media (min-width: 992px) {
+        width: 75%;
+        right: 15px;
+      }
+    }
+    .image-center {
+      width: 45%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: top center;
+      z-index: 200;
+      min-height: 410px;
+      position: absolute;
+      left: 15px;
+      bottom: 0;
+    }
+  }
+  .share {
+    font-weight: bold;
+    margin: 15px 0px;
+  }
+  .icons-container {
+    display: inline-block;
+    margin: left;
+    .social-link {
+      display: inline-block;
+      margin: 0 5px;
+      padding: 2px;
+      border: 1px solid #8eccd5;
+      color: #8eccd5;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      font-size: 20px;
+      text-align: center;
+      svg {
+        display: inline-block;
+        margin-top: 2px;
+      }
+    }
+  }
+}
